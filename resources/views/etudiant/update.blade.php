@@ -42,7 +42,19 @@
                     <label for="Classe" class="form-label">Classe</label>
                     <input type="text" class="form-control" id="Classe" name="classe" value="{{ $etudiants->classe }}"   aria-describedby="emailHelp">
                   </div>
-                 
+                  
+                  
+                  <select class="form-select" aria-label="Default select example" name="tuteur">
+                    <option selected>{{ $etudiants->tuteur->nom}}</option>
+                    @foreach ($tuteurs as $tuteur )
+                    <option value="{{ $tuteur->id }}">
+                      {{ $tuteur->nom }} {{ $tuteur->prenom }}
+
+                    </option>
+
+                    @endforeach
+                   
+                  </select>
               
                 <button type="submit" class="btn btn-primary">Modifer un etudiant</button>
                 <a href="/etudiant" class="btn btn-danger">Revenir a la liste des etudiants</a>

@@ -70,11 +70,14 @@ class EtudiantController extends Controller
     public function update_etudiant($id){
         
         $etudiants= Etudiant::find($id);
+        $tuteurs= Tuteur::all();
         
         
         return view('etudiant.update',
                     compact(
-                        'etudiants'
+                        'etudiants',
+                        'tuteurs'
+                        
                     ));
         
         
@@ -85,11 +88,13 @@ class EtudiantController extends Controller
             'nom' => 'required',
             'prenom' => 'required',
             'classe' => 'required',
+            'tuteur' => 'required'
         ]);
         $etudiant=Etudiant::find($request->id);
         $etudiant->nom= $request->nom;
         $etudiant->prenom= $request->prenom;
         $etudiant->classe= $request->classe;
+        $etudiant->tuteur_id= $request->tuteur;
         $etudiant->update();
         return redirect('/etudiant')->with('status', 'L\'eleve a bien ete modifier avec succes.');
 

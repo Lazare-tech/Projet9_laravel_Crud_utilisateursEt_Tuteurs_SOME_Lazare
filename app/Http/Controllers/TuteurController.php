@@ -38,8 +38,9 @@ class TuteurController extends Controller
     public function update_tuteur($id)
     {
         $tuteur= Tuteur::find($id);
+        $etudiants= Etudiant::all();
         return view('tuteur.update',
-                    compact('tuteur'));
+                    compact('tuteur','etudiants'));
         
     }
     public function update_tuteur_traitement(Request $request)
